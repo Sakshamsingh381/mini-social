@@ -138,19 +138,14 @@ The application supports secure authentication, post creation, engagement action
 
 ## Architecture Overview
 
-Client (React)
-   ↓ JWT
-API Layer (Express)
-   ↓
-Business Logic
-   ↓
-MongoDB Atlas
+Client (React) ↓ JWT API Layer (Express) ↓ Business Logic ↓ MongoDB Atlas
+
 
 
 ## Repository Structure
 
+```text
 mini-social/
-│
 ├── backend/
 │   ├── server.js
 │   ├── models.js
