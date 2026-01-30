@@ -1,165 +1,196 @@
-# Mini Social Post Application
+Mini Social Post Application
+Overview
 
-## Project Overview
+The Mini Social Post Application is a full-stack web application developed as part of the 3W Full Stack Internship Assignment.
+The application allows users to sign up, log in securely, create posts, like and comment on posts, and delete their own content.
 
-The **Mini Social Post Application** is a full-stack web project developed as part of the **3W Full Stack Internship Assignment**.  
-It provides users with the ability to create accounts, log in securely, post text or images, view posts from all users, like, comment, and delete their own posts.
+This project demonstrates practical experience in MERN stack development, authentication, RESTful APIs, database design, and cloud deployment.
 
-This project demonstrates complete full-stack development skills — from authentication to database integration and modern UI design.
+Live Demo
 
----
+Frontend (Vercel):
+https://mini-social-nu.vercel.app
 
-## Features
+Backend API (Render):
+https://mini-social-backend-pdmj.onrender.com/api
 
-### 1. Authentication
-- User signup and login using email and password.  
-- Passwords are securely hashed using **bcrypt** before storage.  
-- **JWT (JSON Web Token)** authentication ensures secure access to protected routes.
+Features
+Authentication
 
-### 2. Post Creation
-- Users can create posts with either text, image, or both.  
-- Only logged-in users can create posts.  
-- Posts are automatically linked to the author’s username.
+Secure user signup and login using email and password.
 
-### 3. Feed
-- Displays all posts from all users in **reverse chronological order**.  
-- Shows the post author, content, image, like count, and comment count.  
-- Automatically updates after a post is created or deleted.
+Password hashing implemented using bcrypt.
 
-### 4. Likes and Comments
-- Any user can like or comment on posts.  
-- Likes and comments are updated instantly on the UI.  
-- Each comment stores the username and timestamp of the commenter.
+JWT-based authentication for protected routes.
 
-### 5. Delete Post
-- Authors can delete only their own posts.  
-- Confirmation prompts before deletion to prevent accidental actions.
+Post Management
 
-### 6. Responsive UI
-- Clean and modern design inspired by the TaskPlanet app’s social feed.  
-- Built using **Material UI** and **CSS** for styling.
+Create posts with text, image URL, or both.
 
----
+Posts are associated with the author’s username.
 
-## Tech Stack
+Only authenticated users can create posts.
 
-| Category | Technologies Used |
-|-----------|-------------------|
-| **Frontend** | React.js, Material UI, CSS |
-| **Backend** | Node.js, Express.js |
-| **Database** | MongoDB Atlas |
-| **Authentication** | JWT (JSON Web Token), bcrypt |
-| **Tools** | Nodemon, Morgan, CORS |
-| **Hosting (optional)** | Vercel (Frontend), Render (Backend) |
+Feed
 
----
+Displays posts from all users in reverse chronological order.
 
-## Project Structure
+Shows author name, post content, image, likes, comments, and timestamps.
+
+Feed updates automatically after creating or deleting a post.
+
+Likes and Comments
+
+Users can like and comment on any post.
+
+Real-time UI updates for likes and comments.
+
+Each comment stores the commenter’s username and timestamp.
+
+Post Deletion
+
+Users can delete only their own posts.
+
+Authorization checks prevent unauthorized deletions.
+
+Responsive UI
+
+Clean and minimal UI inspired by modern social feed layouts.
+
+Responsive design for desktop and mobile screens.
+
+Tech Stack
+Layer	Technologies
+Frontend	React.js, CSS
+Backend	Node.js, Express.js
+Database	MongoDB Atlas
+Authentication	JWT, bcrypt
+Tools	Nodemon, Morgan, CORS
+Deployment	Vercel (Frontend), Render (Backend)
+Project Structure
 mini-social/
 │
 ├── backend/
-│ ├── server.js
-│ ├── models.js
-│ ├── middleware/
-│ │ └── auth.js
-│ ├── package.json
-│ ├── .env
-│ └── ...
+│   ├── server.js
+│   ├── models.js
+│   ├── middleware/
+│   │   └── auth.js
+│   ├── package.json
+│   ├── .env.example
+│   └── .gitignore
 │
 ├── frontend/
-│ ├── src/
-│ │ ├── App.jsx
-│ │ ├── api.js
-│ │ ├── auth/
-│ │ │ ├── Login.jsx
-│ │ │ ├── Signup.jsx
-│ │ │ └── AuthContext.jsx
-│ │ ├── feed/
-│ │ │ ├── Feed.jsx
-│ │ │ ├── PostCard.jsx
-│ │ │ └── CreatePost.jsx
-│ │ └── index.css
-│ ├── package.json
-│ └── ...
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── api.js
+│   │   ├── auth/
+│   │   │   ├── Login.jsx
+│   │   │   ├── Signup.jsx
+│   │   │   └── AuthContext.jsx
+│   │   ├── feed/
+│   │   │   ├── Feed.jsx
+│   │   │   ├── PostCard.jsx
+│   │   │   └── CreatePost.jsx
+│   │   └── index.css
+│   ├── package.json
+│   └── .gitignore
 │
 └── README.md
 
----
-
-## Setup Instructions
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/Nehal381/mini-social.git
+Setup Instructions
+1. Clone the Repository
+git clone https://github.com/Sakshamsingh381/mini-social.git
 cd mini-social
 
-### 2. Setup Backend
+2. Backend Setup
 cd backend
 npm install
 
-Create a .env file inside backend/ with:
-MONGO_URI=your_mongodb_connection_url
-JWT_SECRET=supersecretkey
+
+Create a .env file inside backend/:
+
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
 PORT=4000
 CLIENT_URL=http://localhost:5173
-Run the backend server:
-npm run dev
-Backend will start on http://localhost:4000
 
-3. Setup Frontend
+
+Run the backend server:
+
+npm run dev
+
+
+Backend will run at:
+http://localhost:4000
+
+3. Frontend Setup
 cd ../frontend
 npm install
-
-Start the frontend server:
 npm run dev
-Frontend will run on http://localhost:5173
 
-##API Endpoints
+
+Frontend will run at:
+http://localhost:5173
+
+API Endpoints
 Authentication
 Method	Endpoint	Description
-POST	/api/auth/signup	Create a new user
-POST	/api/auth/login	Authenticate user and return JWT
+POST	/api/auth/signup	Register a new user
+POST	/api/auth/login	Login user and return JWT
 Posts
 Method	Endpoint	Description
-GET	/api/posts	Get all posts
-POST	/api/posts	Create a new post (requires token)
+GET	/api/posts	Fetch all posts
+POST	/api/posts	Create a new post (authenticated)
 DELETE	/api/posts/:id	Delete post (author only)
-
-##Database Structure
-#User Schema
+Database Schema
+User
 {
-  username: String,
-  email: String,
-  passwordHash: String
+  "username": "String",
+  "email": "String",
+  "passwordHash": "String"
 }
 
- #Post Schema
+Post
 {
-  authorId: ObjectId,
-  authorName: String,
-  text: String,
-  imageUrl: String,
-  likes: [ObjectId],
-  comments: [
+  "authorId": "ObjectId",
+  "authorName": "String",
+  "text": "String",
+  "imageUrl": "String",
+  "likes": ["ObjectId"],
+  "comments": [
     {
-      userId: ObjectId,
-      username: String,
-      text: String,
-      createdAt: Date
+      "userId": "ObjectId",
+      "username": "String",
+      "text": "String",
+      "createdAt": "Date"
     }
   ],
-  createdAt: Date,
-  updatedAt: Date
+  "createdAt": "Date",
+  "updatedAt": "Date"
 }
 
-### Future Enhancements
-Add profile pages for each user
-Enable editing posts
-Implement image uploads via Cloudinary
-Add pagination for the feed
-Improve responsive design
+Security Practices
+
+Environment variables are excluded from Git using .gitignore.
+
+Secrets are managed securely via deployment platforms.
+
+Authorization middleware protects sensitive routes.
+
+Future Improvements
+
+User profile pages
+
+Edit post functionality
+
+Image uploads using Cloudinary
+
+Pagination and infinite scroll
+
+Improved UI and animations
 
 Author
+
 Saksham Singh
-Full Stack Developer Intern | MERN Stack | MongoDB | React | Node.js
-GitHub: https://github.com/Nehal381
+Full Stack Developer (MERN Stack)
+GitHub: https://github.com/Sakshamsingh381
