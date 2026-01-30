@@ -139,35 +139,40 @@ The application supports secure authentication, post creation, engagement action
 ## Architecture Overview
 
 Client (React)
-↓ JWT
-API Gateway (Express)
-↓
-Business Logic Layer
-↓
+   ↓ JWT
+API Layer (Express)
+   ↓
+Business Logic
+   ↓
 MongoDB Atlas
 
----
 
 ## Repository Structure
 
 mini-social/
 │
 ├── backend/
-│ ├── server.js
-│ ├── models.js
-│ ├── middleware/
-│ │ └── auth.js
-│ ├── .env.example
-│ └── .gitignore
+│   ├── server.js
+│   ├── models.js
+│   ├── middleware/
+│   │   └── auth.js
+│   ├── .env.example
+│   └── .gitignore
 │
 ├── frontend/
-│ ├── src/
-│ │ ├── App.jsx
-│ │ ├── api.js
-│ │ ├── auth/
-│ │ ├── feed/
-│ │ └── index.css
-│ └── .gitignore
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── api.js
+│   │   ├── auth/
+│   │   │   ├── Login.jsx
+│   │   │   ├── Signup.jsx
+│   │   │   └── AuthContext.jsx
+│   │   ├── feed/
+│   │   │   ├── Feed.jsx
+│   │   │   ├── PostCard.jsx
+│   │   │   └── CreatePost.jsx
+│   │   └── index.css
+│   └── .gitignore
 │
 └── README.md
 
